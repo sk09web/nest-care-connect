@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -22,7 +21,6 @@ const Header = () => {
       setIsMenuOpen(false);
       element.scrollIntoView({ behavior: 'smooth' });
     } else if (location.pathname !== '/') {
-      // If we're not on the home page, navigate to home and then scroll
       window.location.href = `/#${sectionId}`;
     }
   };
@@ -71,12 +69,12 @@ const Header = () => {
           >
             How It Works
           </button>
-          <Link 
-            to="/about" 
-            className={`text-base font-medium transition-colors ${isActive('/about') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+          <button
+            onClick={() => scrollToSection('footer')} 
+            className={`text-base font-medium transition-colors text-gray-700 hover:text-primary`}
           >
             About
-          </Link>
+          </button>
         </nav>
 
         {/* CTA Buttons */}
@@ -122,13 +120,12 @@ const Header = () => {
             >
               How It Works
             </button>
-            <Link 
-              to="/about" 
-              className={`text-lg py-2 ${isActive('/about') ? 'text-primary font-medium' : 'text-gray-700'}`}
-              onClick={() => setIsMenuOpen(false)}
+            <button 
+              onClick={() => scrollToSection('footer')} 
+              className="text-lg py-2 text-gray-700 text-left"
             >
               About
-            </Link>
+            </button>
             <div className="pt-4 flex flex-col space-y-3">
               <Button variant="outline" asChild className="w-full">
                 <Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
