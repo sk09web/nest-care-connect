@@ -1,9 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+
+  const handleHomeClick = () => {
+    navigate('/');
+    // Scroll to top of the page
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <footer id="footer" className="bg-gray-900 text-white pt-12 pb-8">
@@ -40,9 +50,12 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+                <button 
+                  onClick={handleHomeClick} 
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   Home
-                </Link>
+                </button>
               </li>
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-white transition-colors">
