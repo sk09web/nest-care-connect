@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -10,7 +9,7 @@ import {
   DollarSign, 
   Star, 
   CircleCheck, 
-  CircleClock,
+  Circle,
   CircleX,
   Search,
   ThumbsUp,
@@ -153,7 +152,7 @@ const ProfessionalDashboard = () => {
                   </div>
                   <div className="flex items-center justify-between md:w-1/2 mt-4 md:mt-0">
                     <div className="bg-blue-100 text-blue-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium h-fit">
-                      <CircleClock size={14} className="mr-1" />
+                      <Circle size={14} className="mr-1" />
                       <span>Next Appointment</span>
                     </div>
                     <div className="text-right">
@@ -309,13 +308,13 @@ const ProfessionalDashboard = () => {
                         <div>
                           {request.status === 'pending' && (
                             <span className="bg-yellow-100 text-yellow-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
-                              <CircleClock size={14} className="mr-1" />
+                              <Circle size={14} className="mr-1" />
                               Pending
                             </span>
                           )}
                           {request.status === 'accepted' && (
                             <span className="bg-blue-100 text-blue-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
-                              <CircleCheck size={14} className="mr-1" />
+                              <Circle size={14} className="mr-1" />
                               Accepted
                             </span>
                           )}

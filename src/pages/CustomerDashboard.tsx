@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -11,7 +10,7 @@ import {
   Star, 
   Plus, 
   CircleCheck, 
-  CircleClock,
+  Circle,
   CircleX,
   Search
 } from 'lucide-react';
@@ -19,7 +18,6 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-// Sample service request data
 const serviceRequests = [
   {
     id: "sr1",
@@ -57,7 +55,6 @@ const CustomerDashboard = () => {
       
       <main className="flex-grow py-8 bg-gray-50">
         <div className="container-custom">
-          {/* Dashboard Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
             <div>
               <h1 className="text-2xl font-bold">Customer Dashboard</h1>
@@ -71,7 +68,6 @@ const CustomerDashboard = () => {
             </Button>
           </div>
           
-          {/* Quick Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card>
               <CardContent className="p-6 flex items-center space-x-4">
@@ -110,7 +106,6 @@ const CustomerDashboard = () => {
             </Card>
           </div>
           
-          {/* Upcoming Service */}
           <Card className="mb-8">
             <CardHeader>
               <CardTitle>Next Upcoming Service</CardTitle>
@@ -133,7 +128,7 @@ const CustomerDashboard = () => {
                 </div>
                 <div className="md:w-1/3 md:text-right flex md:block items-center justify-between">
                   <div className="bg-blue-100 text-blue-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
-                    <CircleClock size={16} className="mr-1" />
+                    <Circle size={16} className="mr-1" />
                     <span>Scheduled</span>
                   </div>
                   <p className="text-xl font-semibold mt-1">$75</p>
@@ -146,7 +141,6 @@ const CustomerDashboard = () => {
             </CardFooter>
           </Card>
           
-          {/* Service Requests */}
           <Card>
             <CardHeader>
               <div className="flex flex-col md:flex-row justify-between md:items-center">
@@ -184,7 +178,7 @@ const CustomerDashboard = () => {
                         <div>
                           {request.status === 'scheduled' && (
                             <span className="bg-blue-100 text-blue-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
-                              <CircleClock size={14} className="mr-1" />
+                              <Circle size={14} className="mr-1" />
                               Scheduled
                             </span>
                           )}
@@ -196,7 +190,7 @@ const CustomerDashboard = () => {
                           )}
                           {request.status === 'pending' && (
                             <span className="bg-yellow-100 text-yellow-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
-                              <CircleClock size={14} className="mr-1" />
+                              <Circle size={14} className="mr-1" />
                               Pending
                             </span>
                           )}
@@ -213,7 +207,6 @@ const CustomerDashboard = () => {
                 </TabsContent>
                 
                 <TabsContent value="pending">
-                  {/* Filtered content for pending requests */}
                   <div className="border rounded-lg p-4 flex flex-col md:flex-row justify-between">
                     <div className="md:w-1/2">
                       <h4 className="font-semibold">Garden Maintenance</h4>
@@ -226,7 +219,7 @@ const CustomerDashboard = () => {
                     <div className="flex items-center justify-between md:w-1/2 mt-4 md:mt-0">
                       <div>
                         <span className="bg-yellow-100 text-yellow-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
-                          <CircleClock size={14} className="mr-1" />
+                          <Circle size={14} className="mr-1" />
                           Pending
                         </span>
                       </div>
@@ -240,12 +233,58 @@ const CustomerDashboard = () => {
                   </div>
                 </TabsContent>
                 
-                {/* Similar structure for other tabs */}
                 <TabsContent value="scheduled">
-                  {/* Content for scheduled requests */}
+                  <div className="border rounded-lg p-4 flex flex-col md:flex-row justify-between">
+                    <div className="md:w-1/2">
+                      <h4 className="font-semibold">Plumbing Repair</h4>
+                      <p className="text-sm text-gray-600">John Smith</p>
+                      <p className="text-sm text-gray-600 flex items-center mt-1">
+                        <Calendar size={14} className="mr-1" />
+                        <span>Apr 15, 2025, 2:00 PM - 4:00 PM</span>
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between md:w-1/2 mt-4 md:mt-0">
+                      <div>
+                        <span className="bg-blue-100 text-blue-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
+                          <Circle size={14} className="mr-1" />
+                          Scheduled
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-semibold">$120</p>
+                        <Link to="/service-request/sr2" className="text-sm text-primary hover:underline">
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </TabsContent>
+                
                 <TabsContent value="completed">
-                  {/* Content for completed requests */}
+                  <div className="border rounded-lg p-4 flex flex-col md:flex-row justify-between">
+                    <div className="md:w-1/2">
+                      <h4 className="font-semibold">House Cleaning</h4>
+                      <p className="text-sm text-gray-600">Maria Rodriguez</p>
+                      <p className="text-sm text-gray-600 flex items-center mt-1">
+                        <Calendar size={14} className="mr-1" />
+                        <span>Apr 20, 2025, 10:00 AM - 12:00 PM</span>
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between md:w-1/2 mt-4 md:mt-0">
+                      <div>
+                        <span className="bg-green-100 text-green-800 inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
+                          <CircleCheck size={14} className="mr-1" />
+                          Completed
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-semibold">$75</p>
+                        <Link to="/service-request/sr1" className="text-sm text-primary hover:underline">
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </TabsContent>
               </Tabs>
             </CardContent>
@@ -258,7 +297,6 @@ const CustomerDashboard = () => {
   );
 };
 
-// Add this to avoid the "Cannot find name 'User'" error
 const User = ({ size, className }: { size: number, className: string }) => (
   <div className={className} style={{ width: size, height: size }}>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
