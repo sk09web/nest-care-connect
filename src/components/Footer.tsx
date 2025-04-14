@@ -1,9 +1,11 @@
+
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const currentYear = new Date().getFullYear();
 
   const handleHomeClick = () => {
@@ -13,6 +15,23 @@ const Footer = () => {
       top: 0,
       behavior: 'smooth'
     });
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -58,14 +77,20 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <Link to="/services" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   Services
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/how-it-works" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('how-it-works')}
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   How It Works
-                </Link>
+                </button>
               </li>
               <li>
                 <Link to="/about" className="text-gray-400 hover:text-white transition-colors">
@@ -85,29 +110,44 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Our Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/services/cleaning" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   Cleaning Services
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/services/plumbing" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   Plumbing
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/services/electrical" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   Electrical
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/services/gardening" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   Gardening
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/services/painting" className="text-gray-400 hover:text-white transition-colors">
+                <button
+                  onClick={() => scrollToSection('services')}
+                  className="text-gray-400 hover:text-white transition-colors text-left w-full"
+                >
                   Painting
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -119,8 +159,7 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={20} className="mr-2 mt-1 text-gray-400" />
                 <span className="text-gray-400">
-                  123 Service Avenue, Suite 456<br />
-                  Home City, HC 12345
+                  123 Service Avenue, Gurgaon-123456
                 </span>
               </li>
               <li className="flex items-center">

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -25,6 +26,14 @@ const Header = () => {
     }
   };
 
+  const scrollToTop = () => {
+    setIsMenuOpen(false);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   useEffect(() => {
     // Check for hash in URL when component mounts or updates
     if (location.hash) {
@@ -42,7 +51,7 @@ const Header = () => {
     <header className="w-full py-4 bg-white shadow-sm sticky top-0 z-50">
       <div className="container-custom flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center" onClick={scrollToTop}>
           <span className="text-2xl font-bold text-nestcare-500">
             Nest
             <span className="text-nestcare2-500">Care</span>
@@ -51,12 +60,12 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link 
-            to="/" 
+          <button 
+            onClick={scrollToTop} 
             className={`text-base font-medium transition-colors ${isActive('/') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
           >
             Home
-          </Link>
+          </button>
           <button 
             onClick={() => scrollToSection('services')} 
             className={`text-base font-medium transition-colors text-gray-700 hover:text-primary`}
@@ -101,13 +110,12 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden fixed inset-0 z-40 bg-white pt-16">
           <div className="container-custom flex flex-col space-y-4 py-4">
-            <Link 
-              to="/" 
-              className={`text-lg py-2 ${isActive('/') ? 'text-primary font-medium' : 'text-gray-700'}`}
-              onClick={() => setIsMenuOpen(false)}
+            <button 
+              onClick={scrollToTop} 
+              className="text-lg py-2 text-gray-700 text-left"
             >
               Home
-            </Link>
+            </button>
             <button 
               onClick={() => scrollToSection('services')} 
               className="text-lg py-2 text-gray-700 text-left"

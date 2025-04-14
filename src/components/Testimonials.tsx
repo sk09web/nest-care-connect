@@ -2,27 +2,27 @@
 import React from 'react';
 import { Quote } from 'lucide-react';
 
-// Sample testimonial data with Indian names
+// Sample testimonial data with Indian names and faces
 const testimonials = [
   {
     id: 1,
     name: "Sakshi Banerjee",
     role: "Homeowner",
-    image: "https://randomuser.me/api/portraits/women/45.jpg",
+    image: "https://images.unsplash.com/photo-1573140813232-5251a09608ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     quote: "NestCare made it so easy to find a reliable cleaner for my home. The professionals are vetted and the service was outstanding!",
   },
   {
     id: 2,
     name: "Ishaan Joshi",
     role: "Apartment Resident",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: "https://images.unsplash.com/photo-1562004760-aceed7bb0fe3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     quote: "When my plumbing broke down, I found a qualified plumber through NestCare within an hour. Excellent service and very reasonable prices.",
   },
   {
     id: 3,
     name: "Aradhana Joshi",
     role: "Business Owner",
-    image: "https://randomuser.me/api/portraits/women/68.jpg",
+    image: "https://images.unsplash.com/photo-1573496718413-c97d97b5eb69?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     quote: "I use NestCare for all my office maintenance needs. Their professionals are always punctual, skilled, and trustworthy.",
   },
 ];
