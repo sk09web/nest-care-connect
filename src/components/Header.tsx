@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, User } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,30 @@ const Header = () => {
   const isActive = (path: string) => {
     return location.pathname === path;
   };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      setIsMenuOpen(false);
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else if (location.pathname !== '/') {
+      // If we're not on the home page, navigate to home and then scroll
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
+  useEffect(() => {
+    // Check for hash in URL when component mounts or updates
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location.hash]);
 
   return (
     <header className="w-full py-4 bg-white shadow-sm sticky top-0 z-50">
@@ -35,18 +59,18 @@ const Header = () => {
           >
             Home
           </Link>
-          <Link 
-            to="/services" 
-            className={`text-base font-medium transition-colors ${isActive('/services') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+          <button 
+            onClick={() => scrollToSection('services')} 
+            className={`text-base font-medium transition-colors text-gray-700 hover:text-primary`}
           >
             Services
-          </Link>
-          <Link 
-            to="/how-it-works" 
-            className={`text-base font-medium transition-colors ${isActive('/how-it-works') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+          </button>
+          <button 
+            onClick={() => scrollToSection('how-it-works')} 
+            className={`text-base font-medium transition-colors text-gray-700 hover:text-primary`}
           >
             How It Works
-          </Link>
+          </button>
           <Link 
             to="/about" 
             className={`text-base font-medium transition-colors ${isActive('/about') ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
@@ -86,20 +110,18 @@ const Header = () => {
             >
               Home
             </Link>
-            <Link 
-              to="/services" 
-              className={`text-lg py-2 ${isActive('/services') ? 'text-primary font-medium' : 'text-gray-700'}`}
-              onClick={() => setIsMenuOpen(false)}
+            <button 
+              onClick={() => scrollToSection('services')} 
+              className="text-lg py-2 text-gray-700 text-left"
             >
               Services
-            </Link>
-            <Link 
-              to="/how-it-works" 
-              className={`text-lg py-2 ${isActive('/how-it-works') ? 'text-primary font-medium' : 'text-gray-700'}`}
-              onClick={() => setIsMenuOpen(false)}
+            </button>
+            <button 
+              onClick={() => scrollToSection('how-it-works')} 
+              className="text-lg py-2 text-gray-700 text-left"
             >
               How It Works
-            </Link>
+            </button>
             <Link 
               to="/about" 
               className={`text-lg py-2 ${isActive('/about') ? 'text-primary font-medium' : 'text-gray-700'}`}

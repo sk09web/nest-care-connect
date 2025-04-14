@@ -13,7 +13,7 @@ const services = [
     category: "Cleaning",
     rating: 4.8,
     reviews: 235,
-    price: "From $59",
+    price: "From 4,999",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -22,8 +22,8 @@ const services = [
     category: "Plumbing",
     rating: 4.7,
     reviews: 189,
-    price: "From $75",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c93bc4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    price: "From 3,999",
+    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
     id: "3",
@@ -31,7 +31,7 @@ const services = [
     category: "Electrical",
     rating: 4.9,
     reviews: 203,
-    price: "From $85",
+    price: "From 5,499",
     image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -40,14 +40,14 @@ const services = [
     category: "Gardening",
     rating: 4.6,
     reviews: 178,
-    price: "From $49",
-    image: "https://images.unsplash.com/photo-1582401595412-9e23912a9d25?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+    price: "From 2,999",
+    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
   }
 ];
 
 const FeaturedServices = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50" id="services">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row justify-between items-center mb-10">
           <div>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star } from 'lucide-react';
+import { Star, IndianRupee } from 'lucide-react';
 
 interface ServiceCardProps {
   id: string;
@@ -41,8 +41,9 @@ const ServiceCard = ({ id, title, category, rating, reviews, price, image }: Ser
           </div>
           
           <div className="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
-            <div className="text-primary font-semibold">
-              {price}
+            <div className="text-primary font-semibold flex items-center">
+              <IndianRupee size={14} className="mr-1" />
+              {price.replace('From $', 'From ')}
             </div>
             <div className="text-sm text-gray-500">
               Book Now
